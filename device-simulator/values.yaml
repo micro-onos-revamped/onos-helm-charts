@@ -9,8 +9,8 @@ replicaCount: 1
 annotations: {}
 
 image:
-  repository: onosproject/device-simulator
-  tag: latest
+  repository: logm250/gnmi-simulator
+  tag: 0.6.9
   pullPolicy: IfNotPresent
   pullSecrets: []
 
