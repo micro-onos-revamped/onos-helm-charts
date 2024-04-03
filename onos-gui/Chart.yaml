@@ -1,0 +1,14 @@
+apiVersion: v2
+appVersion: v0.8.0
+description: ONOS Graphical User Interface
+home: https://onosproject.org
+keywords:
+- onos
+- sdn
+kubeVersion: '>=1.15.0'
+maintainers:
+- email: support@opennetworking.org
+  name: ONOS Support
+name: onos-gui
+type: application
+version: 1.0.10
