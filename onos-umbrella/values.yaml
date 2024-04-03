@@ -61,6 +61,8 @@ import:
     enabled: true
   onos-cli:
     enabled: true
+  onos-gui:
+    enabled: true
   device-provisioner:
     enabled: true
   topo-discovery:
@@ -97,3 +99,6 @@ fabric-underlay:
 
 # ONOS-CLI
 onos-cli: {}
+
+# ONOS-GUI
+onos-gui: {}

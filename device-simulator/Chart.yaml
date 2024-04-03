@@ -7,7 +7,7 @@ name: device-simulator
 kubeVersion: ">=1.17.0"
 type: application
 version: 0.1.0
-appVersion: latest
+appVersion: v0.6.9
 description: ONOS Config Device Simulator
 keywords:
   - onos
