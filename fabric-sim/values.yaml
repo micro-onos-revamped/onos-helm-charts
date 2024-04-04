@@ -21,7 +21,7 @@ replicaCount: 1
 
 image:
   registry: ""
-  repository: onosproject/fabric-sim
+  repository: logm250/fabric-sim
   tag: '{{ .Chart.AppVersion }}'
   pullPolicy: IfNotPresent
   pullSecrets: []
