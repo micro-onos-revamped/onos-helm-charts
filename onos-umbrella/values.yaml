@@ -42,7 +42,7 @@ atomix:
         # - warn
         # - error
         # - fatal
-        level: info
+        level: debug
         loggers:
           github.com/atomix/atomix/runtime/pkg/utils/grpc/interceptors: error
       persistence:
