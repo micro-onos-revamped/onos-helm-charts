@@ -15,7 +15,6 @@ global:
         enabled: true
         name: ""
 
-
 # Atomix store configurations
 atomix:
   store:
@@ -95,7 +94,6 @@ fabric-underlay:
     store:
       consensus:
         enabled: false
-
 
 # ONOS-CLI
 onos-cli: {}
