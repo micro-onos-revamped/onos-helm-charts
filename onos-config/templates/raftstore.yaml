@@ -15,7 +15,7 @@ metadata:
 spec:
   cluster:
     name: {{ template "onos-config.atomix.consensus.cluster.name" . }}
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ .Release.Namespace }}-data
   partitions: {{ .Values.atomix.store.consensus.partitions }}
   {{- with .Values.atomix.store.consensus.config.electionRTT }}
   electionRTT: {{ . }}

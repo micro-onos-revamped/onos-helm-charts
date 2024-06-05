@@ -40,17 +40,3 @@ spec:
         level: {{ $value }}
       {{- end }}
     {{- end }}
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: {{ template "global.atomix.consensus.cluster.name" . }}
-  namespace: {{ .Release.Namespace }}
-spec:
-  type: ExternalName
-  externalName: {{ template "global.atomix.consensus.cluster.name" . }}.{{ .Release.Namespace }}-data.svc.cluster.local
-  ports:
-  - name: api
-    port: 5678
-  - name: protocol
-    port: 5679
