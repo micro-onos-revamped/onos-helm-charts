@@ -14,8 +14,8 @@ metadata:
     heritage: "{{ .Release.Service }}"
 spec:
   cluster:
-    name: {{ template "fabric-underlay.atomix.consensus.cluster.name" . }}.{{ .Release.Namespace }}-data.svc.cluster
-    namespace: {{ .Release.Namespace }}-data
+    name: {{ template "fabric-underlay.atomix.consensus.cluster.name" . }}
+    namespace: {{ .Release.Namespace }}
   partitions: {{ .Values.atomix.store.consensus.partitions }}
   {{- with .Values.atomix.store.consensus.config.electionRTT }}
   electionRTT: {{ . }}
