@@ -6,7 +6,7 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: {{ template "onos-topo.fullname" . }}
-  namespace: {{ .Release.Namespace }}
+  namespace: {{ .Release.Namespace }}-data
 subjects:
 - kind: ServiceAccount
   name: {{ template "onos-topo.fullname" . }}
