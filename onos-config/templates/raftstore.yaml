@@ -6,7 +6,7 @@ apiVersion: raft.atomix.io/v1beta3
 kind: RaftStore
 metadata:
   name: {{ template "onos-config.atomix.consensus.store.name" . }}
-  namespace: {{ .Release.Namespace }}
+  namespace: {{ .Release.Namespace }}-data
   labels:
     name: {{ template "onos-config.atomix.consensus.store.name" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"

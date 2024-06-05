@@ -16,6 +16,7 @@ spec:
   routes:
     - store:
         name: {{ template "fabric-underlay.atomix.consensus.store.name" . }}
+        namespace: {{ .Release.Namespace }}-data
       {{- with .Values.atomix.store.consensus.rules }}
       rules:
         {{ . | toYaml | nindent 8 }}
