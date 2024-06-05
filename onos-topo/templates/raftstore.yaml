@@ -14,7 +14,8 @@ metadata:
     heritage: "{{ .Release.Service }}"
 spec:
   cluster:
-    name: {{ template "onos-topo.atomix.consensus.cluster.name" . }}
+    name: {{ template "onos-topo.atomix.consensus.cluster.name" . }}.{{ .Release.Namespace }}-data.svc.cluster
+    namespace: {{ .Release.Namespace }}-data
   partitions: {{ .Values.atomix.store.consensus.partitions }}
   {{- with .Values.atomix.store.consensus.config.electionRTT }}
   electionRTT: {{ . }}
