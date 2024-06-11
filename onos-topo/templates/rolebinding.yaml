@@ -10,6 +10,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: {{ template "onos-topo.fullname" . }}
+  namespace: {{ .Release.Namespace }}
 roleRef:
   kind: Role
   name: {{ template "onos-topo.fullname" . }}
