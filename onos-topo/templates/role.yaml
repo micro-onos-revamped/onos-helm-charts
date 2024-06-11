@@ -7,7 +7,7 @@ kind: Role
 metadata:
   creationTimestamp: null
   name: {{ template "onos-topo.fullname" . }}
-  namespace: {{ .Release.Namespace }}
+  namespace: kube-system
 rules:
 - apiGroups:
   - primitives.atomix.io
