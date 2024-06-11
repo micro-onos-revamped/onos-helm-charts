@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2022-present Intel Corporation
+#
+# SPDX-License-Identifier: Apache-2.0
+
+apiVersion: raft.atomix.io/v1beta3
+kind: DataStore
+metadata:
+  name: {{ template "fabric-underlay.atomix.consensus.store.name" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    name: {{ template "fabric-underlay.atomix.consensus.store.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  # Configure the DataStore to use the etcd driver with the v3 API
+  driver:
+    name: atomix.io/etcd
+    apiVersion: v3
+  # Define the configuration to be passed to the driver to connect to the store
+  config:
+    endpoints:
+      - clustermesh-apiserver:2379
