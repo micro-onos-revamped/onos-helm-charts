@@ -19,7 +19,7 @@ global:
 atomix:
   store:
     consensus:
-      enabled: true
+      enabled: false
       name: ""
       image:
         registry: ""

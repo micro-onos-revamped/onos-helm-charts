@@ -122,6 +122,9 @@ spec:
             - name: secret
               mountPath: /etc/onos/certs
               readOnly: true
+            - name: etcd-secret
+              mountPath: /etc/onos/certs/cilium
+              readOnly: true
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           # Enable ptrace for debugging
@@ -142,6 +145,9 @@ spec:
           {{- else }}
             secretName: {{ template "onos-topo.fullname" . }}-secret
           {{- end }}
+        - name: etcd-secret
+          secret:
+            secretName: {{ template "onos-topo.fullname" . }}-etcd-secret
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

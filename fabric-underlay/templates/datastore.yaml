@@ -21,3 +21,6 @@ spec:
   config:
     endpoints:
       - clustermesh-apiserver.kube-system.svc.cluster.local:2379
+    cert-file:
+    key-file:
+    trusted-ca-file:

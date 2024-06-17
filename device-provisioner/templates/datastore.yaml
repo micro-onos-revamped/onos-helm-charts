@@ -6,7 +6,8 @@ apiVersion: atomix.io/v3beta4
 kind: DataStore
 metadata:
   name: {{ template "device-provisioner.atomix.consensus.store.name" . }}
-  namespace: {{ .Release.Namespace }}
+  # namespace: {{ .Release.Namespace }}
+  namespace: kube-system
   labels:
     name: {{ template "device-provisioner.atomix.consensus.store.name" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
@@ -20,4 +21,8 @@ spec:
   # Define the configuration to be passed to the driver to connect to the store
   config:
     endpoints:
-      - clustermesh-apiserver.kube-system.svc.cluster.local:2379
+      - etcd-data.default.svc.cluster.local:2379
+    # cert-file: /etc/onos/certs/cilium/tls.crt
+    # key-file: /etc/onos//cilium/tls.key
+    # trusted-ca-file: /etc/onos/certs/cilium/ca.crt
+    insecure-transport: true

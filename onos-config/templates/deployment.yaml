@@ -142,6 +142,9 @@ spec:
             - name: secret
               mountPath: /etc/onos/certs
               readOnly: true
+            - name: etcd-secret
+              mountPath: /etc/onos/certs/cilium
+              readOnly: true
           # Enable ptrace for debugging
           securityContext:
             {{- if .Values.debug }}
@@ -209,6 +212,9 @@ spec:
           {{- else }}
             secretName: {{ template "onos-config.fullname" . }}-secret
           {{- end }}
+        - name: etcd-secret
+          secret:
+            secretName: {{ template "onos-config.fullname" . }}-etcd-secret
         {{- if .Values.openpolicyagent.enabled }}
         - name: openpolicyagent
           configMap:

@@ -205,7 +205,7 @@ config: {}
 logging:
   loggers:
     root:
-      level: info
+      level: debug
       output:
         stdout:
           sink: stdout
