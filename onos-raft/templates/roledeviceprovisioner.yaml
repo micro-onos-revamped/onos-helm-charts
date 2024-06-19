@@ -2,12 +2,11 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-{{- if .Values.atomix.store.consensus.enabled }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   creationTimestamp: null
-  name: {{ template "device-provisioner.fullname" . }}
+  name: onos-ubrella-device-provisioner
   namespace: {{ .Release.Namespace }}
 rules:
 - apiGroups:
@@ -15,7 +14,6 @@ rules:
   resources:
   - '*'
   resourceNames:
-  - {{ template "device-provisioner.fullname" . }}-objects
+  - onos-ubrella-device-provisioner-objects
   verbs:
   - '*'
-{{- end }}

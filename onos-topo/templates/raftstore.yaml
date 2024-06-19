@@ -2,6 +2,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
+{{- if .Values.atomix.store.consensus.enabled }}
 apiVersion: raft.atomix.io/v1beta3
 kind: RaftStore
 metadata:
@@ -15,6 +16,7 @@ metadata:
 spec:
   cluster:
     name: {{ template "onos-topo.atomix.consensus.cluster.name" . }}
+    namespace: {{ template "onos-topo.atomix.consensus.cluster.namespace" . }}
   partitions: {{ .Values.atomix.store.consensus.partitions }}
   {{- with .Values.atomix.store.consensus.config.electionRTT }}
   electionRTT: {{ . }}
@@ -31,3 +33,4 @@ spec:
   {{- with .Values.atomix.store.consensus.config.maxInMemLogSize }}
   maxInMemLogSize: {{ . }}
   {{- end }}
+{{- end }}

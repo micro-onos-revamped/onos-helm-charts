@@ -128,14 +128,34 @@ openpolicyagent image name
 
 {{- define "onos-config.atomix.consensus.cluster.name" -}}
 {{- if .Values.global.atomix.store.consensus.enabled -}}
-{{- include "global.atomix.consensus.cluster.name" . -}}
+{{- include "global.atomix.store.consensus.cluster.name" . -}}
 {{- else -}}
 {{- printf "%s-consensus" .Release.Name -}}
 {{- end -}}
 {{- end -}}
 
+{{- define "onos-config.atomix.consensus.cluster.namespace" -}}
+{{- if .Values.global.atomix.store.consensus.enabled -}}
+{{- include "global.atomix.store.consensus.cluster.namespace" . -}}
+{{- else -}}
+{{- printf "%s" .Release.Namespace -}}
+{{- end -}}
+{{- end -}}
+
 {{- define "onos-config.atomix.consensus.store.name" -}}
+{{- if .Values.global.atomix.store.consensus.enabled -}}
+{{- printf "%s-config" ( include "global.atomix.store.consensus.cluster.name" . ) -}}
+{{- else -}}
 {{- printf "%s-consensus" ( include "onos-config.fullname" . ) -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "onos-config.atomix.consensus.store.namespace" -}}
+{{- if .Values.global.atomix.store.consensus.enabled -}}
+{{- include "global.atomix.store.consensus.cluster.namespace" . -}}
+{{- else -}}
+{{- printf "%s" .Release.Namespace -}}
+{{- end -}}
 {{- end -}}
 
 {{- define "onos-config.atomix.cache.store.name" -}}

@@ -1,0 +1,24 @@
+# SPDX-FileCopyrightText: 2022-present Intel Corporation
+#
+# SPDX-License-Identifier: Apache-2.0
+
+apiVersion: raft.atomix.io/v1beta3
+kind: RaftStore
+metadata:
+  name: {{ .Release.Name }}-topo
+  namespace: {{ .Release.Namespace }}
+  labels:
+    name: {{ .Release.Name }}-topo
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  cluster:
+    name: {{ .Release.Name }}
+    namespace: {{ .Release.Namespace }}
+  partitions: 3
+  electionRTT:
+  heartbeatRTT:
+  snapshotEntries:
+  compactionOverhead:
+  maxInMemLogSize:

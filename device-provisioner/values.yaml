@@ -8,6 +8,7 @@ global:
     tag: ""
   atomix:
     store:
+      disablemultinamespace: true
       consensus:
         enabled: false
 
@@ -58,6 +59,7 @@ atomix:
         level: info
 
   store:
+    disablemultinamespace: true
     consensus:
       enabled: true
       name: ""
@@ -94,18 +96,18 @@ atomix:
       #         cache:
       #           enabled: true
       rules:
-        - names:
-            - '*'
-        - kind: Map
-          apiVersion: v1
-          config:
-            cache:
-              enabled: true
-        - kind: IndexedMap
-          apiVersion: v1
-          config:
-            cache:
-              enabled: true
+      - names:
+        - '*'
+      - kind: Map
+        apiVersion: v1
+        config:
+          cache:
+            enabled: true
+      - kind: IndexedMap
+        apiVersion: v1
+        config:
+          cache:
+            enabled: true
       server: {}
       config:
         # The estimated round trip time for a heartbeat from the Raft leader to a follower.
@@ -138,7 +140,7 @@ atomix:
         # enabled: false
         # storageClass: ""
         accessModes:
-          - ReadWriteOnce
+        - ReadWriteOnce
         size: 8Gi
       securityContext:
         runAsUser: 0

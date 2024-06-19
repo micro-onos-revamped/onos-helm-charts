@@ -86,7 +86,7 @@ fabric-underlay image name
 
 {{- define "fabric-underlay.atomix.consensus.cluster.name" -}}
 {{- if .Values.global.atomix.store.consensus.enabled -}}
-{{- include "global.atomix.consensus.cluster.name" . -}}
+{{- include "global.atomix.store.consensus.cluster.namespace" . -}}
 {{- else -}}
 {{- printf "%s-consensus" .Release.Name -}}
 {{- end -}}

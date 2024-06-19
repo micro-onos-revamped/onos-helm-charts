@@ -16,6 +16,7 @@ spec:
   routes:
     - store:
         name: {{ template "device-provisioner.atomix.consensus.store.name" . }}
+        namespace: {{ template "device-provisioner.atomix.consensus.store.namespace" . }}
       {{- with .Values.atomix.store.consensus.rules }}
       rules:
         {{ . | toYaml | nindent 8 }}

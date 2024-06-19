@@ -96,14 +96,34 @@ onos-topo consensus image name
 
 {{- define "onos-topo.atomix.consensus.cluster.name" -}}
 {{- if .Values.global.atomix.store.consensus.enabled -}}
-{{- include "global.atomix.consensus.cluster.name" . -}}
+{{- include "global.atomix.store.consensus.cluster.name" . -}}
 {{- else -}}
 {{- printf "%s-consensus" .Release.Name -}}
 {{- end -}}
 {{- end -}}
 
+{{- define "onos-topo.atomix.consensus.cluster.namespace" -}}
+{{- if .Values.global.atomix.store.consensus.enabled -}}
+{{- include "global.atomix.store.consensus.cluster.namespace" . -}}
+{{- else -}}
+{{- printf "%s" .Release.Namespace -}}
+{{- end -}}
+{{- end -}}
+
 {{- define "onos-topo.atomix.consensus.store.name" -}}
+{{- if .Values.global.atomix.store.consensus.enabled -}}
+{{- printf "%s-topo" ( include "global.atomix.store.consensus.cluster.name" . ) -}}
+{{- else -}}
 {{- printf "%s-consensus" ( include "onos-topo.fullname" . ) -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "onos-topo.atomix.consensus.store.namespace" -}}
+{{- if .Values.global.atomix.store.consensus.enabled -}}
+{{- include "global.atomix.store.consensus.cluster.namespace" . -}}
+{{- else -}}
+{{- printf "%s" .Release.Namespace -}}
+{{- end -}}
 {{- end -}}
 
 {{- define "onos-topo.atomix.cache.store.name" -}}

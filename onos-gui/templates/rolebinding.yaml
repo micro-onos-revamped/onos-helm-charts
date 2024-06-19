@@ -8,9 +8,9 @@ metadata:
   name: {{ template "onos-gui.fullname" . }}-access-services
   namespace: {{ .Release.Namespace }}
 subjects:
-  - kind: ServiceAccount
-    name: default # Name is case sensitive
-    namespace: {{ .Release.Namespace }}
+- kind: ServiceAccount
+  name: default # Name is case sensitive
+  namespace: {{ .Release.Namespace }}
 roleRef:
   kind: Role
   name: {{ template "onos-gui.fullname" . }}-service-role

@@ -96,14 +96,34 @@ device-provisioner consensus image name
 
 {{- define "device-provisioner.atomix.consensus.cluster.name" -}}
 {{- if .Values.global.atomix.store.consensus.enabled -}}
-{{- include "global.atomix.consensus.cluster.name" . -}}
+{{- include "global.atomix.store.consensus.cluster.name" . -}}
 {{- else -}}
 {{- printf "%s-consensus" .Release.Name -}}
 {{- end -}}
 {{- end -}}
 
+{{- define "device-provisioner.atomix.consensus.cluster.namespace" -}}
+{{- if .Values.global.atomix.store.consensus.enabled -}}
+{{- include "global.atomix.store.consensus.cluster.namespace" . -}}
+{{- else -}}
+{{- printf "%s" .Release.Namespace -}}
+{{- end -}}
+{{- end -}}
+
 {{- define "device-provisioner.atomix.consensus.store.name" -}}
+{{- if .Values.global.atomix.store.consensus.enabled -}}
+{{- printf "%s-device-provisioner" ( include "global.atomix.store.consensus.cluster.name" . ) -}}
+{{- else -}}
 {{- printf "%s-consensus" ( include "device-provisioner.fullname" . ) -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "device-provisioner.atomix.consensus.store.namespace" -}}
+{{- if .Values.global.atomix.store.consensus.enabled -}}
+{{- include "global.atomix.store.consensus.cluster.namespace" . -}}
+{{- else -}}
+{{- printf "%s" .Release.Namespace -}}
+{{- end -}}
 {{- end -}}
 
 {{- define "device-provisioner.atomix.cache.store.name" -}}

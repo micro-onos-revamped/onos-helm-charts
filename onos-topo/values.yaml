@@ -13,8 +13,9 @@ global:
   nameOverride: ""
   atomix:
     store:
+      disablemultinamespace: true
       consensus:
-        enabled: false
+        enabled: false    
 
 replicaCount: 1
 
@@ -64,6 +65,7 @@ atomix:
         level: info
 
   store:
+    disablemultinamespace: true
     consensus:
       enabled: true
       name: ""
@@ -74,7 +76,7 @@ atomix:
         pullPolicy: ""
         pullSecrets: []
       replicas: 3
-      partitions: 10
+      partitions: 3
       # An array of routing rules for the consensus store route.
       # Examples:
       #
@@ -100,13 +102,13 @@ atomix:
       #         cache:
       #           enabled: true
       rules:
-        - names:
-            - '*'
-        - kind: Map
-          apiVersion: v1
-          config:
-            cache:
-              enabled: true
+      - names:
+        - '*'
+      - kind: Map
+        apiVersion: v1
+        config:
+          cache:
+            enabled: true
 
       server: {}
       config:
@@ -140,7 +142,7 @@ atomix:
         # enabled: false
         # storageClass: ""
         accessModes:
-          - ReadWriteOnce
+        - ReadWriteOnce
         size: 8Gi
       securityContext:
         runAsUser: 0

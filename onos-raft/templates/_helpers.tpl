@@ -71,19 +71,11 @@ global consensus image name
 {{- end -}}
 
 
-{{- define "global.atomix.store.consensus.cluster.name" -}}
+
+{{- define "global.atomix.store.consensus.cluster.namespace" -}}
 {{- with .Values.global.atomix.store.consensus.name -}}
 {{- . -}}
 {{- else -}}
 {{- printf "%s-consensus" .Release.Name -}}
-{{- end -}}
-{{- end -}}
-
-
-{{- define "global.atomix.store.consensus.cluster.namespace" -}}
-{{- with .Values.global.atomix.store.consensus.namespace -}}
-{{- . -}}
-{{- else -}}
-{{- printf "%s" .Release.Namespace -}}
 {{- end -}}
 {{- end -}}

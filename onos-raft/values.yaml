@@ -6,31 +6,19 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-global:
-  fullnameOverride: "onos"
-  nameOverride: ""
-  atomix:
-    store:
-      disablemultinamespace: false
-      consensus:
-        enabled: true
-        name: ""
-        namespace: ""
-
 # Atomix store configurations
 atomix:
   store:
-    disablemultinamespace: false
     consensus:
       enabled: true
       name: ""
-      namespace: ""
       image:
         registry: ""
         repository: atomix/raft-node
         tag: ""
         pullPolicy: ""
         pullSecrets: []
+      replicas: 3
       server: {}
       logging:
         # The encoding is the format of the logging output:
@@ -55,51 +43,3 @@ atomix:
         size: 8Gi
       securityContext:
         runAsUser: 0
-
-import:
-  onos-topo:
-    enabled: true
-  onos-config:
-    enabled: true
-  onos-cli:
-    enabled: true
-  onos-gui:
-    enabled: true
-  device-provisioner:
-    enabled: true
-  topo-discovery:
-    enabled: true
-  fabric-underlay:
-    enabled: false
-
-# ONOS-TOPO
-onos-topo:
-  atomix:
-    store:
-      consensus:
-        enabled: false
-
-# ONOS-CONFIG
-onos-config:
-  atomix:
-    store:
-      consensus:
-        enabled: false
-
-device-provisioner:
-  atomix:
-    store:
-      consensus:
-        enabled: false
-
-fabric-underlay:
-  atomix:
-    store:
-      consensus:
-        enabled: false
-
-# ONOS-CLI
-onos-cli: {}
-
-# ONOS-GUI
-onos-gui: {}
