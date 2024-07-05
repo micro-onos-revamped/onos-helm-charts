@@ -13,6 +13,9 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
+  annotations:
+    service.cilium.io/global: "true"
+    service.cilium.io/shared: "true"
 spec:
   replicas: {{ .Values.atomix.store.consensus.replicas }}
   {{- if .Values.atomix.store.consensus.image.tag }}

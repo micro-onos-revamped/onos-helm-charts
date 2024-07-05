@@ -36,6 +36,9 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
     {{- include "onos-topo.labels" . | nindent 4 }}
+  annotations:
+    service.cilium.io/global: "true"
+    service.cilium.io/shared: "true"
 spec:
   type: LoadBalancer
   selector:

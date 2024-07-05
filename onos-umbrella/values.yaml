@@ -67,7 +67,7 @@ import:
   topo-discovery:
     enabled: true
   fabric-underlay:
-    enabled: false
+    enabled: true
 
 # ONOS-TOPO
 onos-topo:

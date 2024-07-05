@@ -12,6 +12,9 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
     {{- include "onos-config.labels" . | nindent 4 }}
+  annotations:
+    service.cilium.io/global: "true"
+    service.cilium.io/shared: "true"
 spec:
   type: {{ .Values.service.type }}
   selector:
