@@ -27,7 +27,7 @@ atomix:
         tag: ""
         pullPolicy: ""
         pullSecrets: []
-      replicas: 5
+      replicas: 3
       server: {}
       logging:
         # The encoding is the format of the logging output:
